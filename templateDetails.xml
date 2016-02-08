@@ -11,4 +11,12 @@
     <updateservers>
         <server type="extension" name="jeprodev" priority="1" >http://www.github.com/jeprodev/jeproshop/jeproshop_update.xml</server>
     </updateservers>
+
+    <files>
+        <filename>component.php</filename>
+        <filename>error.php</filename>
+        <filename>favicon.ico</filename>
+        <filename>index.php</filename>
+        <filename>templateDetails.xml</filename>
+    </files>
 </extension>
