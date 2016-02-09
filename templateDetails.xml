@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--DOCTYPE install PUBLIC "-//Joomla! 1.7//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.7/template-install.dtd" -->
 <extension version="3.3" type="template" client="site">
-    <name></name>
-    <versio></versio>
-    <creationDate></creationDate>
-    <author></author>
-    <authorUrl></authorUrl>
-    <authorEmail></authorEmail>
+    <name>Jeprodev</name>
+    <version>0.0.0.0.1</version>
+    <creationDate>2/02/2012</creationDate>
+    <author>jeprodev</author>
+    <authorUrl>jeprodev.net</authorUrl>
+    <authorEmail>development@jeprodev.net</authorEmail>
 
     <updateservers>
         <server type="extension" name="jeprodev" priority="1" >http://www.github.com/jeprodev/jeproshop/jeproshop_update.xml</server>
