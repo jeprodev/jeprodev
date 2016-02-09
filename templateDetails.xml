@@ -19,4 +19,11 @@
         <filename>index.php</filename>
         <filename>templateDetails.xml</filename>
     </files>
+
+    <config>
+        <fields name="params" >
+            <field name="jeprodev_large_screen_width" type="text" default="1200" label="TPL_JEPRODEV_LARGE_SCREEN_WIDTH_LABEL" description="TPL_JEPRODEV_LARGE_SCREEN_WIDTH_DESC" />
+            <field name="jeprodev_medium_screen_width" type="text" default="1000" label="TPL_JEPRODEV_MEDIUM_SCREEN_PAGE_WIDTH_LABEL" description="TPL_JEPRODEV_MEDIUM_SCREEN_WIDTH_DESC" />
+        </fields>
+    </config>
 </extension>

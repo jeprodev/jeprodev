@@ -1,10 +1,44 @@
 <?php
+/**
+ * @version     1.0.4
+ * @package     Templates
+ * @subpackage  jeprodev
+ * @link        http://jeprodev.net
+ * @copyright   (C) 2009 - 2011
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of,
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+// no direct access
+defined('_JEXEC') or die('Restricted access');
+
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
 $menu = $app->getMenu();
 $user = JFactory::getUser();
 $this->language = $doc->language;
 $this->direction = $doc->direction;
+
+$jeprodevLeftContentWrapper = ($this->countModules('position-9') || $this->countModules('position-10')) ? 'jeprodev_left_content_wrapper' : 'jeprodev_left_content_wrapper_empty';
+$jeprodevRightContentWrapper = ($this->countModules('position-9') || $this->countModules('position-10')) ? 'jeprodev_right_content_wrapper' : 'jeprodev_right_content_wrapper_empty';
+$jeprodevArticleSlider = ($this->countModules('position-4')) ? 'jeprodev_article_slider' : 'jeprodev_article_slider_empty';
+$jeprodevLeftContent = ($this->countModules('position-5') || $this->countModules('position-6')) ? 'jeprodev_left_content': 'jeprodev_left_content_empty';
+$jeprodevMainContent = ($this->countModules('position-5') || $this->countModules('position-6')) ? 'jeprodev_main_content_part': 'jeprodev_main_content_full';
+$pageWidth = $this->params->get('jeprodev_template_width') . 'px;';
+$leftColumnWidth = ($this->countModules('position-5') || $this->countModules('position-6')) ? $this->params->get('jeprodev_template_left_column_width', 175) : 0;
+$rightColumnWidth = ($this->countModules('position-9') || $this->countModules('position-10')) ? $this->params->get('jeprodev_template_right_column_width', 175) : 0;
+$mainContentWidth = ($pageWidth - $leftColumnWidth - $rightColumnWidth -4) . 'px;';
 
 /** template wrapper style classes **/
 $jeprodevContentWrapperClasses = 'col-lg-12 col-md-12 center-block';
@@ -66,7 +100,15 @@ JHtml::_('bootstrap.framework');
             </div>
         </div>
         <div id="footer-wrapper" class="row">
-
+            <div id="footer-content-wrapper" >
+                <div class="clearfix" ></div>
+                <div id="jeprodev_foot_wrapper" class="col-lg-12" >
+                    <jdoc:include type="modules" name="position-11" style="none" />
+                </div>
+                <div id="jeprodev_debug" class="col-lg-12" >
+                    <jdoc:include type="modules" name="debug" style="none" />
+                </div>
+            </div>
         </div>
     </body>
 </html>
