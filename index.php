@@ -39,7 +39,7 @@ $pageWidth = $this->params->get('jeprodev_template_width') . 'px;';
 $leftColumnWidth = ($this->countModules('position-5') || $this->countModules('position-6')) ? $this->params->get('jeprodev_template_left_column_width', 175) : 0;
 $rightColumnWidth = ($this->countModules('position-9') || $this->countModules('position-10')) ? $this->params->get('jeprodev_template_right_column_width', 175) : 0;
 $mainContentWidth = ($pageWidth - $leftColumnWidth - $rightColumnWidth -4) . 'px;';
-
+$logoPath = JURI::base() . 'templates/' .$this->template . '/images/' . $this->params->get('jeprodev-logo', 'logo_48.png');
 /** template wrapper style classes **/
 $jeprodevContentWrapperClasses = 'col-lg-12 col-md-12 center-block';
 $jeprodevLeftContentWrapperClasses = ($this->countModules('position-9') || $this->countModules('position-10')) ? 'col-lg-10 col-md-10 col-sm-12 col-xs-12 pull-left' : 'col-lg-12 col-md-12 col-xs-12 col-sm-12';
@@ -61,14 +61,36 @@ JHtml::_('bootstrap.framework');
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <jdoc:include type="head" />
         <link rel="stylesheet" href="<?php echo JURI::base() . 'templates/' . $this->template . '/css/jeprodev.css'; ?>" type="text/css" />
-        <link rel="stylesheet" href="<?php echo JURI::base(); ?>templates/<?php echo $this->template; ?>/css/bootstrap.css" type="text/css" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         <?php
         if($this->params->get('jeprodev_template_use_latex', 1)){ ?>
             <script type="text/javascript" src="https://latex.codecogs.com/latexit.js"></script>
         <?php } ?>
     </head>
     <body class="background" >
-        <div id="top-menu-bar" class="row" ></div>
+        <nav class="navbar navbar-inverse navbar-fixed-top" >
+            <div class="container" >
+                <div class="col-lg-3" id="jeprodev-logo-wrapper" >
+                    <div id="jeprodev-logo-img-wrapper" class="pull-left" ><img src="<?php echo $logoPath; ?>"  /></div>
+                    <div class="site-name pull-right" >
+                        <h2>Jeprodev</h2>
+                        <span>Technologies</span>
+                    </div>
+                </div>
+                <div class="col-lg-9" id="jeprodev-menu-wrapper" ></div>
+            </div>
+        </nav>
+        <div id="top-menu-bar" class="row" >
+            <?php if ($this->countModules('position-2')){ ?>
+                <div id="jeprodev_menu_wrapper" class="col-lg-12">
+                    <jdoc:include type="modules" name="position-2" style="none" />
+                </div>
+            <?php } ?>
+        </div>
         <div id="page-wrapper" class="row">
             <div class="page-content-wrapper <?php echo $jeprodevContentWrapperClasses; ?>">
                 <div id="jeprodev-left-column-wrapper" >
