@@ -1,4 +1,7 @@
-#jeprodev-logo-wrapper #jeprodev-logo-img-wrapper{ width:25%; }
-#jeprodev-logo-wrapper .site-name{ width: 74%;  position: relative;}
-#jeprodev-logo-wrapper .site-name h2{ color:white; margin:0; padding-top:10px; font-size:24px; }
-#jeprodev-logo-wrapper .site-name span{ color: white; margin:0 25px 15px 45px; font-size:13px}
+#page-wrapper.row{ margin-top: 10px; border:1px solid red;}
+#jeprodev-main{ margin-top:40px;}
+#jeprodev-right-column-wrapper{  }
+#jeprodev-logo-wrapper #jeprodev-logo-img-wrapper{ padding: 5px; }
+#jeprodev-logo-wrapper .site-name{   position: relative;}
+#jeprodev-logo-wrapper .site-name h2{ color:white; margin:0;  font-size:20px; padding: 3px;}
+#jeprodev-logo-wrapper .site-name span{ color: white; margin:0 25px 15px 45px; font-size:12px}

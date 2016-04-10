@@ -39,7 +39,8 @@ $pageWidth = $this->params->get('jeprodev_template_width') . 'px;';
 $leftColumnWidth = ($this->countModules('position-5') || $this->countModules('position-6')) ? $this->params->get('jeprodev_template_left_column_width', 175) : 0;
 $rightColumnWidth = ($this->countModules('position-9') || $this->countModules('position-10')) ? $this->params->get('jeprodev_template_right_column_width', 175) : 0;
 $mainContentWidth = ($pageWidth - $leftColumnWidth - $rightColumnWidth -4) . 'px;';
-$logoPath = JURI::base() . 'templates/' .$this->template . '/images/' . $this->params->get('jeprodev-logo', 'logo_48.png');
+$logoPath = JURI::base() . 'templates/' .$this->template . '/images/' . $this->params->get('jeprodev-logo', 'logo_40.png');
+
 /** template wrapper style classes **/
 $jeprodevContentWrapperClasses = 'col-lg-12 col-md-12 center-block';
 $jeprodevLeftContentWrapperClasses = ($this->countModules('position-9') || $this->countModules('position-10')) ? 'col-lg-10 col-md-10 col-sm-12 col-xs-12 pull-left' : 'col-lg-12 col-md-12 col-xs-12 col-sm-12';
@@ -72,63 +73,66 @@ JHtml::_('bootstrap.framework');
         <?php } ?>
     </head>
     <body class="background" >
-        <nav class="navbar navbar-inverse navbar-fixed-top" >
-            <div class="container" >
-                <div class="col-lg-3" id="jeprodev-logo-wrapper" >
-                    <div id="jeprodev-logo-img-wrapper" class="pull-left" ><img src="<?php echo $logoPath; ?>"  /></div>
-                    <div class="site-name pull-right" >
-                        <h2>Jeprodev</h2>
-                        <span>Technologies</span>
+        <div id="page-wrapper">
+            <nav class="navbar navbar-inverse navbar-fixed-top" >
+                <div class="container" >
+                    <div class="col-lg-2" id="jeprodev-logo-wrapper" >
+                        <span id="jeprodev-logo-img-wrapper" class="pull-left col-lg-3" ><img src="<?php echo $logoPath; ?>"  /></span>
+                        <span class="site-name pull-right col-lg-8" >
+                            <h2>Jeprodev</h2>
+                            <span>Technologies</span>
+                        </span>
+                    </div>
+                    <div class="col-lg-10" id="jeprodev-menu-wrapper" >
+                        <?php if ($this->countModules('position-2')){ ?>
+                            <div id="jeprodev_menu_wrapper" class="col-lg-12">
+                                <jdoc:include type="modules" name="position-2" style="none" />
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
-                <div class="col-lg-9" id="jeprodev-menu-wrapper" ></div>
-            </div>
-        </nav>
-        <div id="top-menu-bar" class="row" >
-            <?php if ($this->countModules('position-2')){ ?>
-                <div id="jeprodev_menu_wrapper" class="col-lg-12">
-                    <jdoc:include type="modules" name="position-2" style="none" />
-                </div>
-            <?php } ?>
-        </div>
-        <div id="page-wrapper" class="row">
-            <div class="page-content-wrapper <?php echo $jeprodevContentWrapperClasses; ?>">
-                <div id="jeprodev-left-column-wrapper" >
-                    <div id="jeprodev-slider-container" ></div>
-                    <div id="jeprodev-content-container" >
-                        <?php if($this->countModules('position-5') || $this->countModules('position-6')){ ?>
-                        <div id="jeprodev-main-content-left-column" >
-                            <jdoc:include type="modules" name="position-5" style="none" />
-                            <jdoc:include type="modules" name="position-6" style="none" />
+            </nav>
+            <div class="row" role="main" id="jeprodev-main">
+                <div class="container" style="margin-top: 20px;">
+                    <div class="page-content-wrapper <?php echo $jeprodevContentWrapperClasses; ?>">
+                        <div id="jeprodev-left-column-wrapper" class="<?php echo $jeprodevLeftContentWrapperClasses; ?>">
+                            <div id="jeprodev-slider-container" class="<?php echo $jeprodevArticleSliderWrapperClass; ?>" ></div>
+                            <div id="jeprodev-content-container" class="<?php echo $jeprodevMainContentWrapperClasses; ?>" >
+                                <?php if($this->countModules('position-5') || $this->countModules('position-6')){ ?>
+                                <div id="jeprodev-main-content-left-column" class="<?php echo $jeprodevLeftContentColumnWrapperClasses; ?>" >
+                                    <jdoc:include type="modules" name="position-5" style="none" />
+                                    <jdoc:include type="modules" name="position-6" style="none" />
+                                </div>
+                                <?php } ?>
+                                <div id="jeprodev-main-content-main-column" class="<?php echo $jeprodevMainContentDataClass; ?>">
+                                    <?php if($menu->getActive() == $menu->getDefault()){ ?>
+                                        <jdoc:include type="modules" name="position-7" style="none" />
+                                        <jdoc:include type="modules" name="position-8" style="none" />
+                                    <?php } else { ?>
+                                        <jdoc:include type="message" />
+                                        <jdoc:include type="component" />
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if($this->countModules('position-9') || $this->countModules('position-10')){ ?>
+                        <div id="jeprodev-right-column-wrapper" class="<?php echo $jeprodevRightContentWrapperClasses; ?>" style="border:1px solid red;">
+                            <jdoc:include type="modules" name="position-9" style="none" />
+                            <jdoc:include type="modules" name="position-10" style="none" />
                         </div>
                         <?php } ?>
-                        <div id="jeprodev-main-content-main-column" >
-                            <?php if($menu->getActive() == $menu->getDefault()){ ?>
-                                <jdoc:include type="modules" name="position-7" style="none" />
-                                <jdoc:include type="modules" name="position-8" style="none" />
-                            <?php } else { ?>
-                                <jdoc:include type="message" />
-                                <jdoc:include type="component" />
-                            <?php } ?>
-                        </div>
                     </div>
                 </div>
-                <?php if($this->countModules('position-9') || $this->countModules('position-10')){ ?>
-                <div id="jeprodev-right-column-wrapper" >
-                    <jdoc:include type="modules" name="position-9" style="none" />
-                    <jdoc:include type="modules" name="position-10" style="none" />
-                </div>
-                <?php } ?>
             </div>
-        </div>
-        <div id="footer-wrapper" class="row">
-            <div id="footer-content-wrapper" >
-                <div class="clearfix" ></div>
-                <div id="jeprodev_foot_wrapper" class="col-lg-12" >
-                    <jdoc:include type="modules" name="position-11" style="none" />
-                </div>
-                <div id="jeprodev_debug" class="col-lg-12" >
-                    <jdoc:include type="modules" name="debug" style="none" />
+            <div id="footer-wrapper" class="row">
+                <div id="footer-content-wrapper" class="container">
+                    <div class="clearfix" ></div>
+                    <div id="jeprodev_foot_wrapper" class="col-lg-12" >
+                        <jdoc:include type="modules" name="position-11" style="none" />
+                    </div>
+                    <div id="jeprodev_debug" class="col-lg-12" >
+                        <jdoc:include type="modules" name="debug" style="none" />
+                    </div>
                 </div>
             </div>
         </div>
