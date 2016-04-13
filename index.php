@@ -42,7 +42,7 @@ $mainContentWidth = ($pageWidth - $leftColumnWidth - $rightColumnWidth -4) . 'px
 $logoPath = JURI::base() . 'templates/' .$this->template . '/images/' . $this->params->get('jeprodev-logo', 'logo_40.png');
 
 /** template wrapper style classes **/
-$jeprodevContentWrapperClasses = 'col-lg-12 col-md-12 center-block';
+$jeprodevContentWrapperClasses = 'col-lg-12 col-lg-offset-0 col-md-12';
 $jeprodevLeftContentWrapperClasses = ($this->countModules('position-9') || $this->countModules('position-10')) ? 'col-lg-10 col-md-10 col-sm-12 col-xs-12 pull-left' : 'col-lg-12 col-md-12 col-xs-12 col-sm-12';
 $jeprodevArticleSliderWrapperClass = 'col-lg-12 col-md-12';
 $jeprodevMainContentWrapperClasses = 'col-lg-12 col-md-12';
@@ -60,30 +60,30 @@ JHtml::_('bootstrap.framework');
         <meta charset="utf-8" >
         <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge" >
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <jdoc:include type="head" />
-        <link rel="stylesheet" href="<?php echo JURI::base() . 'templates/' . $this->template . '/css/jeprodev.css'; ?>" type="text/css" />
+        <jdoc:include type="head" />        
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<link rel="stylesheet" href="<?php echo JURI::base() . 'templates/' . $this->template . '/css/jeprodev.css'; ?>" type="text/css" />
         <?php
         if($this->params->get('jeprodev_template_use_latex', 1)){ ?>
             <script type="text/javascript" src="https://latex.codecogs.com/latexit.js"></script>
         <?php } ?>
     </head>
     <body class="background" >
-        <div id="page-wrapper">
+        <div id="page-wrapper"  >
             <nav class="navbar navbar-inverse navbar-fixed-top" >
                 <div class="container" >
-                    <div class="col-lg-2" id="jeprodev-logo-wrapper" >
-                        <span id="jeprodev-logo-img-wrapper" class="pull-left col-lg-3" ><img src="<?php echo $logoPath; ?>"  /></span>
-                        <span class="site-name pull-right col-lg-8" >
+                    <div class="col-lg-2 col-sm-6" id="jeprodev-logo-wrapper" >
+                        <span id="jeprodev-logo-img-wrapper" class="pull-left col-lg-2 col-sm-2" ><img src="<?php echo $logoPath; ?>"  /></span>
+                        <span class="site-name  col-lg-8" >
                             <h2>Jeprodev</h2>
                             <span>Technologies</span>
                         </span>
                     </div>
-                    <div class="col-lg-10" id="jeprodev-menu-wrapper" >
+                    <div class="col-lg-10 " id="jeprodev-menu-wrapper" >
                         <?php if ($this->countModules('position-2')){ ?>
                             <div id="jeprodev_menu_wrapper" class="col-lg-12">
                                 <jdoc:include type="modules" name="position-2" style="none" />
@@ -92,39 +92,39 @@ JHtml::_('bootstrap.framework');
                     </div>
                 </div>
             </nav>
-            <div class="row" role="main" id="jeprodev-main">
-                <div class="container" style="margin-top: 20px;">
-                    <div class="page-content-wrapper <?php echo $jeprodevContentWrapperClasses; ?>">
-                        <div id="jeprodev-left-column-wrapper" class="<?php echo $jeprodevLeftContentWrapperClasses; ?>">
-                            <div id="jeprodev-slider-container" class="<?php echo $jeprodevArticleSliderWrapperClass; ?>" ></div>
-                            <div id="jeprodev-content-container" class="<?php echo $jeprodevMainContentWrapperClasses; ?>" >
-                                <?php if($this->countModules('position-5') || $this->countModules('position-6')){ ?>
-                                <div id="jeprodev-main-content-left-column" class="<?php echo $jeprodevLeftContentColumnWrapperClasses; ?>" >
-                                    <jdoc:include type="modules" name="position-5" style="none" />
-                                    <jdoc:include type="modules" name="position-6" style="none" />
-                                </div>
+            <div id="jeprodev-main" >
+                <div id="page-content-wrapper" style="margin-top: 20px;">
+                    <div id="jeprodev-left-column-wrapper" class="<?php //echo $jeprodevLeftContentWrapperClasses; ?>">
+                        <div id="jeprodev-slider-container" class=" pull-left<?php //echo $jeprodevArticleSliderWrapperClass; ?>" >
+						</div>
+                        <div id="jeprodev-content-container" class="pull-left <?php //echo $jeprodevMainContentWrapperClasses; ?>" >
+                            <?php if($this->countModules('position-5') || $this->countModules('position-6')){ ?>
+                            <div id="jeprodev-main-content-left-column" class="pull-left <?php //echo $jeprodevLeftContentColumnWrapperClasses; ?>" >
+                                <jdoc:include type="modules" name="position-5" style="none" />
+                                <jdoc:include type="modules" name="position-6" style="none" />
+                            </div>
+                            <?php } ?>
+                            <div id="jeprodev-main-content-main-column" class="<?php //echo $jeprodevMainContentDataClass; ?>">
+                                <?php if($menu->getActive() == $menu->getDefault()){ ?>
+                                    <jdoc:include type="modules" name="position-7" style="none" />
+                                    <jdoc:include type="modules" name="position-8" style="none" />
+                                <?php } else { ?>
+                                    <jdoc:include type="message" />
+                                    <jdoc:include type="component" />
                                 <?php } ?>
-                                <div id="jeprodev-main-content-main-column" class="<?php echo $jeprodevMainContentDataClass; ?>">
-                                    <?php if($menu->getActive() == $menu->getDefault()){ ?>
-                                        <jdoc:include type="modules" name="position-7" style="none" />
-                                        <jdoc:include type="modules" name="position-8" style="none" />
-                                    <?php } else { ?>
-                                        <jdoc:include type="message" />
-                                        <jdoc:include type="component" />
-                                    <?php } ?>
-                                </div>
                             </div>
                         </div>
-                        <?php if($this->countModules('position-9') || $this->countModules('position-10')){ ?>
-                        <div id="jeprodev-right-column-wrapper" class="<?php echo $jeprodevRightContentWrapperClasses; ?>" style="border:1px solid red;">
-                            <jdoc:include type="modules" name="position-9" style="none" />
-                            <jdoc:include type="modules" name="position-10" style="none" />
-                        </div>
-                        <?php } ?>
                     </div>
-                </div>
+                    <?php if($this->countModules('position-9') || $this->countModules('position-10')){ ?>
+                    <div id="jeprodev-right-column-wrapper" class="pull-right <?php //echo $jeprodevRightContentWrapperClasses; ?>" style="border:1px solid red;">
+                        <jdoc:include type="modules" name="position-9" style="none" />
+                        <jdoc:include type="modules" name="position-10" style="none" />
+                    </div>
+                    <?php } ?>
+                </div>                
             </div>
-            <div id="footer-wrapper" class="row">
+			<div style="clear:both;" ></div>
+            <div id="footer-wrapper" >
                 <div id="footer-content-wrapper" class="container">
                     <div class="clearfix" ></div>
                     <div id="jeprodev_foot_wrapper" class="col-lg-12" >
