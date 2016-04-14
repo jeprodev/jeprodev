@@ -2,7 +2,7 @@
 <!--DOCTYPE install PUBLIC "-//Joomla! 1.7//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.7/template-install.dtd" -->
 <extension version="3.3" type="template" client="site">
     <name>Jeprodev</name>
-    <version>0.0.0.0.1</version>
+    <version>0.0.0.1</version>
     <creationDate>2/02/2012</creationDate>
     <author>jeprodev</author>
     <authorUrl>jeprodev.net</authorUrl>

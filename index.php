@@ -116,7 +116,7 @@ JHtml::_('bootstrap.framework');
                         </div>
                     </div>
                     <?php if($this->countModules('position-9') || $this->countModules('position-10')){ ?>
-                    <div id="jeprodev-right-column-wrapper" class="pull-right <?php //echo $jeprodevRightContentWrapperClasses; ?>" style="border:1px solid red;">
+                    <div id="jeprodev-right-column-wrapper" class="pull-right <?php //echo $jeprodevRightContentWrapperClasses; ?>" >
                         <jdoc:include type="modules" name="position-9" style="none" />
                         <jdoc:include type="modules" name="position-10" style="none" />
                     </div>
